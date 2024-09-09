@@ -17,9 +17,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -112,9 +110,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {\r",
-									"    pm.response.to.have.status(422);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode422\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('errors')\r",
@@ -191,9 +187,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {\r",
-									"    pm.response.to.have.status(422);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode422\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('errors')\r",
@@ -270,9 +264,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {\r",
-									"    pm.response.to.have.status(422);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode422\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('errors')\r",
@@ -349,9 +341,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('profile')\r",
@@ -478,9 +468,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -508,7 +496,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    // \"bio\": \"{{bio}}\",\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -573,9 +561,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -608,7 +594,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    // \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{signInEmail}}\"\r\n    // \"password\": \"{{password}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{signInEmail}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -672,9 +658,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -767,9 +751,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -795,7 +777,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\"\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"bio\": \"{{bio}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -859,9 +841,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function() {\r",
 									"    pm.response.to.have.jsonBody('user')\r",
@@ -904,7 +884,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\"\r\n    // \"bio\": \"{{bio}}\",\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{signInPassword}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"username\": \"{{username}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -966,9 +946,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 401\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
+									"eval(pm.globals.get(\"StatuseCode401\"))();\r",
 									"\r",
 									"\r",
 									""
@@ -1016,10 +994,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									""
+									"eval(pm.globals.get(\"StatuseCode200\"))();",
+									"",
+									"pm.test(\"Assert all response keys\", function() {",
+									"    pm.response.to.have.jsonBody('user')",
+									"    .and.to.have.jsonBody('user.username')",
+									"    .and.to.have.jsonBody('user.email')",
+									"    .and.to.have.jsonBody('user.token')",
+									"    .and.to.have.jsonBody('user.bio')",
+									"    .and.to.have.jsonBody('user.image');",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1115,9 +1099,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1183,9 +1165,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1251,9 +1231,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1319,9 +1297,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1387,9 +1363,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1442,9 +1416,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1579,9 +1551,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1624,8 +1594,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomFirstName\", pm.variables.replaceIn('{{$randomFirstName}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1635,9 +1617,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1654,7 +1634,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"{{randomFirstName}}@gmailcom\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{username}}@gmailcom\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1680,8 +1660,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomDomainName\", pm.variables.replaceIn('{{$randomDomainName}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1691,9 +1683,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1710,7 +1700,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"{{randomDomainName}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{username}}@.com\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1758,9 +1748,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1826,9 +1814,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1894,9 +1880,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 422\", function () {",
-									"    pm.response.to.have.status(422);",
-									"});",
+									"eval(pm.globals.get(\"StatuseCode422\"))();",
 									"",
 									"pm.test(\"Assert all response keys\", function() {",
 									"    pm.response.to.have.jsonBody('errors')",
@@ -1981,7 +1965,120 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
+									"\r",
+									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
+									"\r",
+									"pm.test(\"Assert all response keys\", function () {\r",
+									"    pm.response.to.have.jsonBody('article')\r",
+									"    .and.to.have.jsonBody('article.slug')\r",
+									"    .and.to.have.jsonBody('article.title')\r",
+									"    .and.to.have.jsonBody('article.description')\r",
+									"    .and.to.have.jsonBody('article.body')\r",
+									"    .and.to.have.jsonBody('article.createdAt')\r",
+									"    .and.to.have.jsonBody('article.updatedAt')\r",
+									"    .and.to.have.jsonBody('article.tagList')\r",
+									"    .and.to.have.jsonBody('article.favorited')\r",
+									"    .and.to.have.jsonBody('article.favoritesCount')\r",
+									"    .and.to.have.jsonBody('article.author')\r",
+									"});\r",
+									"\r",
+									"const slugConduit = pm.response.json().article.slug;\r",
+									"const authToken = pm.environment.get('authToken');\r",
+									"\r",
+									"eval(pm.environment.get(\"deleteArticleFunction\"));\r",
+									"deleteArticle(slugConduit, authToken).then(() => {\r",
+									"    console.log(\"Article deletion completed\");\r",
+									"}).catch((err) => {\r",
+									"    console.log(\"Deletion failed:\", err);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article\": {\r\n        \"title\": \"{{title}}\",\r\n        \"description\": \"{{description}}\",\r\n        \"body\": \"{{body}}\",\r\n        \"tagList\": []\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/articles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create article request Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"const slugConduit = pm.environment.get('slugConduit');\r",
+									"const authToken = pm.environment.get('authToken');"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2055,7 +2152,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2073,18 +2170,19 @@
 									"    .and.to.have.jsonBody('article.author');\r",
 									"});\r",
 									"\r",
-									"// const slugConduit = pm.response.json().article.slug;\r",
-									"// const authToken = pm.environment.get('authToken');\r",
-									"\r",
-									"// eval(pm.environment.get(\"deleteArticleFunction\"));\r",
-									"// deleteArticle(slugConduit, authToken).then(() => {\r",
-									"//     console.log(\"Article deletion completed\");\r",
-									"// }).catch((err) => {\r",
-									"//     console.log(\"Deletion failed:\", err);\r",
-									"// });\r",
 									"\r",
 									"pm.test(\"Response content type is application/json\", function () {\r",
 									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"const slugConduit = pm.response.json().article.slug;\r",
+									"const authToken = pm.environment.get('authToken');\r",
+									"\r",
+									"eval(pm.environment.get(\"deleteArticleFunction\"));\r",
+									"deleteArticle(slugConduit, authToken).then(() => {\r",
+									"    console.log(\"Article deletion completed\");\r",
+									"}).catch((err) => {\r",
+									"    console.log(\"Deletion failed:\", err);\r",
 									"});\r",
 									""
 								],
@@ -2123,7 +2221,9 @@
 									"eval(pm.environment.get(\"addArticleFunction\"));\r",
 									"await addArticle(title, body, description);\r",
 									"\r",
+									"\r",
 									"const slugConduit = pm.environment.get('slugConduit');\r",
+									"const authToken = pm.environment.get('authToken');\r",
 									"\r",
 									""
 								],
@@ -2174,7 +2274,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest2\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode204\"))();\r",
 									"\r",
 									"pm.test(\"Article succesfuly deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"\");\r",
@@ -2268,7 +2368,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2286,7 +2386,19 @@
 									"    .and.to.have.jsonBody('article.author')\r",
 									"});\r",
 									"\r",
-									""
+									"const slugConduit = pm.response.json().article.slug;\r",
+									"const authToken = pm.environment.get('authToken');\r",
+									"\r",
+									"eval(pm.environment.get(\"deleteArticleFunction\"));\r",
+									"deleteArticle(slugConduit, authToken).then(() => {\r",
+									"    console.log(\"Article deletion completed\");\r",
+									"}).catch((err) => {\r",
+									"    console.log(\"Deletion failed:\", err);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -2320,10 +2432,13 @@
 									"eval(pm.environment.get(\"loginUserFunction\"));\r",
 									"await loginUser(email, password);\r",
 									"\r",
+									"\r",
+									"\r",
 									"eval(pm.environment.get(\"addArticleFunction\"));\r",
 									"await addArticle(title, body, description);\r",
 									"\r",
 									"const slugConduit = pm.environment.get('slugConduit');\r",
+									"const authToken = pm.environment.get('authToken');\r",
 									"\r",
 									""
 								],
@@ -2377,7 +2492,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2399,6 +2514,13 @@
 									"        pm.expect(article).to.have.property('author');\r",
 									"    });\r",
 									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2432,7 +2554,6 @@
 									"\r",
 									"eval(pm.environment.get(\"loginUserFunction\"));\r",
 									"await loginUser(email, password);\r",
-									"\r",
 									"\r",
 									""
 								],
@@ -2485,13 +2606,19 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
 									"pm.test(\"Assert all response keys\", function () {\r",
 									"    pm.response.to.have.jsonBody('articles')\r",
 									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2525,7 +2652,6 @@
 									"\r",
 									"eval(pm.environment.get(\"loginUserFunction\"));\r",
 									"await loginUser(email, password);\r",
-									"\r",
 									"\r",
 									""
 								],
@@ -2589,7 +2715,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2610,6 +2736,11 @@
 									"        pm.expect(article).to.have.property('favoritesCount');\r",
 									"        pm.expect(article).to.have.property('author');\r",
 									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
 									"});\r",
 									""
 								],
@@ -2707,7 +2838,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -2729,6 +2860,13 @@
 									"        pm.expect(article).to.have.property('author');\r",
 									"    });\r",
 									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2861,7 +2999,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest5\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode401\"))();\r",
 									"\r",
 									""
 								],
@@ -2904,11 +3042,21 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest5\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode401\"))();\r",
 									"\r",
 									"pm.test(\"Article not deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"Unauthorized\\n\");\r",
 									"});\r",
+									"\r",
+									"// const slugConduit = pm.response.json().article.slug;\r",
+									"// const authToken = pm.environment.get('authToken');\r",
+									"\r",
+									"// eval(pm.environment.get(\"deleteArticleFunction\"));\r",
+									"// deleteArticle(slugConduit, authToken).then(() => {\r",
+									"//     console.log(\"Article deletion completed\");\r",
+									"// }).catch((err) => {\r",
+									"//     console.log(\"Deletion failed:\", err);\r",
+									"// });\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2946,8 +3094,8 @@
 									"eval(pm.environment.get(\"addArticleFunction\"));\r",
 									"await addArticle(title, body, description);\r",
 									"\r",
-									"const slugConduit = pm.environment.get('slugConduit');\r",
-									"\r",
+									"// const slugConduit = pm.environment.get('slugConduit');\r",
+									"// const authToken = pm.environment.get('authToken');\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2990,7 +3138,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest3\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode403\"))();\r",
 									"\r",
 									"pm.test(\"Article not deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"Forbidden\");\r",
@@ -3095,7 +3243,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest4\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode404\"))();\r",
 									"\r",
 									"pm.test(\"Article not deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"Not Found\");\r",
@@ -3235,7 +3383,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"pm.test(\"Check if bio is null\", function () {\r",
 									"  const jsonData = pm.response.json();\r",
@@ -3322,7 +3470,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -3419,7 +3567,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -3475,7 +3623,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -3491,8 +3639,11 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"packages": {},
-								"type": "text/javascript"
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -3560,7 +3711,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -3583,7 +3734,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{tokenConduit}}",
+									"value": "{{authToken}}",
 									"type": "string"
 								}
 							]
@@ -3620,7 +3771,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode200\"))();\r",
 									"\r",
 									"eval(pm.globals.get(\"defaulRequestTest\"))();\r",
 									"\r",
@@ -3724,30 +3875,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest2\"))();\r",
-									"\r",
-									"// eval(pm.globals.get(\"defaulRequestTest\"))();\r",
-									"\r",
-									"// pm.test(\"Assert all response keys in comments\", function () {\r",
-									"//     const jsonData = pm.response.json();\r",
-									"\r",
-									"//     pm.expect(jsonData).to.have.property('comments');\r",
-									"//     pm.expect(jsonData.comments).to.be.an('array').that.is.not.empty;\r",
-									"\r",
-									"\r",
-									"//     jsonData.comments.forEach(function(comment) {\r",
-									"//         pm.expect(comment).to.have.property('id');\r",
-									"//         pm.expect(comment).to.have.property('body');\r",
-									"//         pm.expect(comment).to.have.property('createdAt');\r",
-									"//         pm.expect(comment).to.have.property('updatedAt');\r",
-									"//         pm.expect(comment).to.have.property('author');\r",
-									"\r",
-									"//         pm.expect(comment.author).to.have.property('username');\r",
-									"//         pm.expect(comment.author).to.have.property('bio');\r",
-									"//         pm.expect(comment.author).to.have.property('image');\r",
-									"//         pm.expect(comment.author).to.have.property('following');\r",
-									"//     });\r",
-									"// });"
+									"eval(pm.globals.get(\"StatuseCode204\"))();\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -3832,7 +3961,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest3\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode403\"))();\r",
 									"\r",
 									"pm.test(\"Article not deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"Forbidden\");\r",
@@ -3928,7 +4057,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(pm.globals.get(\"basicTest5\"))();\r",
+									"eval(pm.globals.get(\"StatuseCode401\"))();\r",
 									"\r",
 									"pm.test(\"Article not deleted\", function () {\r",
 									"    pm.expect(pm.response.text()).to.eql(\"Unauthorized\\n\");\r",
@@ -4013,7 +4142,7 @@
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					"const basicTest = () => {\r",
+					"const StatuseCode200 = () => {\r",
 					"        pm.test(\"Status code is 200\", function () {\r",
 					"            pm.response.to.have.status(200);\r",
 					"        })\r",
@@ -4022,11 +4151,11 @@
 					"    });\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"basicTest\", basicTest.toString())\r",
+					"pm.globals.set(\"StatuseCode200\", StatuseCode200.toString())\r",
 					"\r",
 					"/// --------------------------------------------------\r",
 					"\r",
-					"const basicTest2 = () => {\r",
+					"const StatuseCode204 = () => {\r",
 					"        pm.test(\"Status code is 204\", function () {\r",
 					"            pm.response.to.have.status(204);\r",
 					"        })\r",
@@ -4035,11 +4164,11 @@
 					"    });\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"basicTest2\", basicTest2.toString())\r",
+					"pm.globals.set(\"StatuseCode204\", StatuseCode204.toString())\r",
 					"\r",
 					"/// --------------------------------------------------\r",
 					"\r",
-					"const basicTest3 = () => {\r",
+					"const StatuseCode403 = () => {\r",
 					"        pm.test(\"Status code is 403\", function () {\r",
 					"            pm.response.to.have.status(403);\r",
 					"        })\r",
@@ -4048,12 +4177,12 @@
 					"    });\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"basicTest3\", basicTest3.toString())\r",
+					"pm.globals.set(\"StatuseCode403\", StatuseCode403.toString())\r",
 					"\r",
 					"/// --------------------------------------------------\r",
 					"\r",
 					"\r",
-					"const basicTest4 = () => {\r",
+					"const StatuseCode404 = () => {\r",
 					"        pm.test(\"Status code is 404\", function () {\r",
 					"            pm.response.to.have.status(404);\r",
 					"        })\r",
@@ -4062,11 +4191,11 @@
 					"    });\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"basicTest4\", basicTest4.toString())\r",
+					"pm.globals.set(\"StatuseCode404\", StatuseCode404.toString())\r",
 					"\r",
 					"/// --------------------------------------------------\r",
 					"\r",
-					"const basicTest5 = () => {\r",
+					"const StatuseCode401 = () => {\r",
 					"        pm.test(\"Status code is 401\", function () {\r",
 					"            pm.response.to.have.status(401);\r",
 					"        })\r",
@@ -4075,7 +4204,20 @@
 					"    });\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"basicTest5\", basicTest5.toString())\r",
+					"pm.globals.set(\"StatuseCode401\", StatuseCode401.toString())\r",
+					"\r",
+					"/// --------------------------------------------------\r",
+					"\r",
+					"const StatuseCode422 = () => {\r",
+					"        pm.test(\"Status code is 422\", function () {\r",
+					"            pm.response.to.have.status(422);\r",
+					"        })\r",
+					"    pm.test(\"Response time is less than 2000ms\", function () {\r",
+					"        pm.expect(pm.response.responseTime).to.be.below(2000)\r",
+					"    });\r",
+					"}\r",
+					"\r",
+					"pm.globals.set(\"StatuseCode422\", StatuseCode422.toString())\r",
 					"\r",
 					"/// --------------------------------------------------\r",
 					"\r",
