@@ -19,7 +19,7 @@ jobs:
 
     - name: Run Postman tests
       run: |
-        newman run RAW_Postman_Practice.postman_collection.json -e Article_environment.postman_environment.json
+        newman run Postman_Practice.postman_collection.json -e Article_environment.postman_environment.json
 
         
       
