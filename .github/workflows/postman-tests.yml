@@ -19,7 +19,7 @@ jobs:
 
     - name: Run Postman tests
       run: |
-        newman run path/to/Postman Practice.postman_collection.json -e path/to/Article environment.postman_environment.json
-        newman run path/to/Postman Practice.postman_collection.json -e path/to/Sign up environment.postman_environment.json
-        newman run path/to/Postman Practice.postman_collection.json -e path/to/User sign in environment.postman_environment.json
+        newman run path/to/Postman_Practice.postman_collection.json -e path/to/Article_environment.postman_environment.json
+        newman run path/to/Postman_Practice.postman_collection.json -e path/to/Sign_up_environment.postman_environment.json
+        newman run path/to/Postman_Practice.postman_collection.json -e path/to/User_sign_in_environment.postman_environment.json
       
