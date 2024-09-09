@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "08b4a8cd-8c0b-4ca6-8ce8-03991445fd52",
-		"name": "Postman Practice",
+		"_postman_id": "b7d8624f-6032-4f05-8e15-dd8e647d8dda",
+		"name": "Postman_Practice",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "36693224",
-		"_collection_link": "https://mate-academy.postman.co/workspace/Alpha~8f99039b-149f-4ee1-8473-2ee182b86199/collection/36693224-08b4a8cd-8c0b-4ca6-8ce8-03991445fd52?action=share&source=collection_link&creator=36693224"
+		"_collection_link": "https://mate-academy.postman.co/workspace/8f99039b-149f-4ee1-8473-2ee182b86199/collection/36693224-b7d8624f-6032-4f05-8e15-dd8e647d8dda?action=share&source=collection_link&creator=36693224"
 	},
 	"item": [
 		{
@@ -40,7 +40,30 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"var email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"var password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"});\r",
+									"\r",
+									"const authToken = pm.environment.get('authToken')\r",
+									"var email = pm.environment.get('email');  \r",
+									"var password = 'pier123!'; "
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -53,7 +76,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{tokenConduit}}",
+									"value": "{{authToken}}",
 									"type": "string"
 								}
 							]
@@ -62,7 +85,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{signInPassword}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -70,11 +93,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users/login",
+							"raw": "{{url}}/users/login",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
 							],
 							"path": [
+								"users",
 								"login"
 							]
 						}
@@ -105,8 +129,30 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomPassword\", pm.variables.replaceIn('{{$randomUserName}}'))\r",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"var email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"var password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"});\r",
+									"\r",
+									"const authToken = pm.environment.get('authToken')\r",
+									"var email = pm.environment.get('email');  \r",
+									"var password = 'pier123!'; "
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -118,7 +164,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"password\": \"{{randomPassword}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"haslo1234\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -126,11 +172,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users/login",
+							"raw": "{{url}}/users/login",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
 							],
 							"path": [
+								"users",
 								"login"
 							]
 						}
@@ -156,6 +203,39 @@
 								"type": "text/javascript",
 								"packages": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"var email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"var password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"});\r",
+									"\r",
+									"const authToken = pm.environment.get('authToken')\r",
+									"var email = pm.environment.get('email');  \r",
+									"var password = 'pier123!'; "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
 					],
 					"request": {
@@ -171,11 +251,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users/login",
+							"raw": "{{url}}/users/login",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
 							],
 							"path": [
+								"users",
 								"login"
 							]
 						}
@@ -201,6 +282,39 @@
 								"type": "text/javascript",
 								"packages": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"var email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"var password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"});\r",
+									"\r",
+									"const authToken = pm.environment.get('authToken')\r",
+									"var email = pm.environment.get('email');  \r",
+									"var password = 'pier123!'; "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
 					],
 					"request": {
@@ -216,11 +330,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users/login",
+							"raw": "{{url}}/users/login",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
 							],
 							"path": [
+								"users",
 								"login"
 							]
 						}
@@ -249,6 +364,48 @@
 									"pm.test(\"Assert ussername is the same as in the link\", function () {\r",
 									"    const jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.profile.username).to.eql(pm.variables.get(\"username\"));\r",
+									"});\r",
+									"\r",
+									"//pm.test(\"Check if bio is null\", function () {\r",
+									"//  const jsonData = pm.response.json();\r",
+									"//  pm.expect(jsonData.profile.bio).to.be.null;\r",
+									"//});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"// pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -260,11 +417,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}profiles/{{username}}",
+							"raw": "{{url}}/profiles/{{username}}",
 							"host": [
-								"{{url}}profiles"
+								"{{url}}"
 							],
 							"path": [
+								"profiles",
 								"{{username}}"
 							]
 						}
@@ -278,7 +436,33 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
 									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
 									"\r",
 									"pm.sendRequest('https://picsum.photos/200', function (err, res) {\r",
 									"    if (!err) {\r",
@@ -324,7 +508,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    // \"bio\": \"{{bio}}\",\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -332,9 +516,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -347,8 +534,36 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
 									"\r",
-									"pm.environment.set(\"signInEmail\", pm.variables.replaceIn('133{{$randomEmail}}'))"
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"signInEmail\", pm.variables.replaceIn('133{{$randomEmail}}'))\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -358,7 +573,6 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"// Fixed syntax error in the second PUT request body\r",
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
@@ -372,34 +586,9 @@
 									"});\r",
 									"\r",
 									"\r",
-									"\r",
-									"// Send a request to revert the email back to the original value after the test\r",
-									"pm.sendRequest({\r",
-									"    url: 'https://conduit.mate.academy/api/user',  // Profile update URL\r",
-									"    method: 'PUT',\r",
-									"    header: {\r",
-									"        'Authorization': 'Bearer ' + pm.environment.get(\"tokenConduit\"),  // Use your auth token if required\r",
-									"        'Content-Type': 'application/json'\r",
-									"    },\r",
-									"    body: {\r",
-									"        mode: 'raw',\r",
-									"        raw: JSON.stringify({\r",
-									"            user: {\r",
-									"                image: pm.variables.get(\"randomImageUrl\"),\r",
-									"                username: pm.variables.get(\"username\"),\r",
-									"                bio: pm.variables.get(\"bio\"),\r",
-									"                email: pm.environment.get(\"email\"),  // Revert to the original email\r",
-									"                password: pm.variables.get(\"password\"),\r",
-									"                effectiveImage: pm.variables.get(\"randomImageUrl\")\r",
-									"            }\r",
-									"        })\r",
-									"    }\r",
-									"}, function (err, res) {\r",
-									"    if (err) {\r",
-									"        console.log(\"Error reverting email: \", err);\r",
-									"    } else {\r",
-									"        console.log(\"Email reverted to: \" + pm.environment.get(\"email\"));\r",
-									"    }\r",
+									"pm.test(\"Assert email is changed\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user.email.toLowerCase()).to.eql(pm.variables.get(\"signInEmail\").toLowerCase());\r",
 									"});\r",
 									""
 								],
@@ -419,7 +608,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{signInEmail}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    // \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{signInEmail}}\"\r\n    // \"password\": \"{{password}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -427,9 +616,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -442,6 +634,33 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
 									"\r",
 									"pm.environment.set(\"signInPassword\", pm.variables.replaceIn('133{{$randomUserName}}'))"
 								],
@@ -484,7 +703,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bio\": null,\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{signInPassword}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    // \"bio\": null,\r\n    // \"email\": \"{{email}}\",\r\n    \"password\": \"{{signInPassword}}\"\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -492,9 +711,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -507,6 +729,33 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
 									"\r",
 									"pm.environment.set(\"bio\", pm.variables.replaceIn('{{$randomLoremParagraph}}'))"
 								],
@@ -546,7 +795,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    // \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\"\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{password}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -554,9 +803,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -569,6 +821,33 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"var username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});\r",
 									"\r",
 									"pm.environment.set(\"username\", pm.variables.replaceIn('{{$randomWord}}987'))"
 								],
@@ -592,6 +871,11 @@
 									"    .and.to.have.jsonBody('user.email');\r",
 									"});\r",
 									"\r",
+									"\r",
+									"pm.test(\"Assert username is changed\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.user.username.toLowerCase()).to.eql(pm.variables.get(\"username\").toLowerCase());\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript",
@@ -600,6 +884,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -610,7 +904,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\",\r\n    \"bio\": \"{{bio}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{signInPassword}}\",\r\n    \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"user\": {\r\n    // \"image\": \"{{$randomImageUrl}}\",\r\n    \"username\": \"{{username}}\"\r\n    // \"bio\": \"{{bio}}\",\r\n    // \"email\": \"{{email}}\",\r\n    // \"password\": \"{{signInPassword}}\",\r\n    // \"effectiveImage\": \"{{$randomImageUrl}}\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -618,9 +912,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -633,7 +930,33 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"function generateRandomUserName(length) {\r",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';\r",
+									"    let result = '';\r",
+									"    for (let i = 0; i < length; i++) {\r",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));\r",
+									"    }\r",
+									"    return result;\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"userName\", generateRandomUserName(7));\r",
+									"const username = generateRandomUserName(7);    \r",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');  \r",
+									"const password = 'pier123!'; \r",
+									"\r",
+									"eval(pm.environment.get(\"registerUserFunction\"));\r",
+									"registerUser(email, username, password).then(() => {\r",
+									"    console.log('User registration completed');\r",
+									"}).catch((err) => {\r",
+									"    console.log('Registration failed:', err);\r",
+									"\r",
+									"    eval(pm.environment.get(\"loginUserFunction\"));\r",
+									"    loginUser(email, password).then(() => {\r",
+									"        console.log('Login completed');\r",
+									"    }).catch((err) => {\r",
+									"        console.log('Login failed:', err);\r",
+									"    });\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -675,9 +998,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}user",
+							"raw": "{{url}}/user",
 							"host": [
-								"{{url}}user"
+								"{{url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},
@@ -703,8 +1029,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -716,7 +1054,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -724,9 +1062,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -739,8 +1080,32 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"pm.environment.set(\"email2\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!';",
+									"const email = pm.variables.replaceIn('{{$randomEmail}}');",
+									"",
+									"eval(pm.environment.get(\"registerUserFunction\"));",
+									"registerUser(email, username, password).then(() => {",
+									"    console.log('User registration completed');",
+									"}).catch((err) => {",
+									"    console.log('Registration failed:', err);",
+									"});",
+									"",
+									"",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -769,7 +1134,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"eldred34\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{email2}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -777,9 +1142,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -792,8 +1160,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -822,7 +1202,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"rowan.ferry30@hotmail.com\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"rowan.ferry30@hotmail.com\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -830,9 +1210,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -845,8 +1228,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -875,7 +1270,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"1{{randomUsername}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"1{{username}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -883,9 +1278,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -899,7 +1297,7 @@
 							"script": {
 								"exec": [
 									"function generateLongUsername(length) {",
-									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
 									"    let result = '';",
 									"    for (let i = 0; i < length; i++) {",
 									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
@@ -907,10 +1305,11 @@
 									"    return result;",
 									"}",
 									"",
+									"pm.environment.set(\"username\", generateLongUsername(41));",
 									"",
-									"pm.environment.set(\"Username\", generateLongUsername(41));",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
 									"",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -939,7 +1338,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{Username}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -947,9 +1346,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -962,8 +1364,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -992,7 +1406,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"user {{randomUsername}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"user {{username}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1000,9 +1414,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1044,7 +1461,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1052,9 +1469,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1067,7 +1487,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'",
 									""
 								],
 								"type": "text/javascript",
@@ -1097,7 +1530,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1105,9 +1538,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1120,8 +1556,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomFirstName\", pm.variables.replaceIn('{{$randomFirstName}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1150,7 +1598,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"{{randomFirstName}}gmail.com\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}\",\n    \"email\": \"{{username}}mail.com\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1158,9 +1606,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1211,9 +1662,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1264,9 +1718,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1328,9 +1785,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1343,8 +1803,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomUsername\", pm.variables.replaceIn('{{$randomUserName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1373,7 +1845,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomUsername}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{userame}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1381,9 +1853,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1396,9 +1871,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"randomFirstName\", pm.variables.replaceIn('{{$randomFirstName}}'))",
-									"pm.environment.set(\"randomLastName\", pm.variables.replaceIn('{{$randomLastName}}'))",
-									"pm.environment.set(\"randomEmail\", pm.variables.replaceIn('{{$randomEmail}}'))"
+									"function generateRandomUserName(length) {",
+									"    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';",
+									"    let result = '';",
+									"    for (let i = 0; i < length; i++) {",
+									"        result += characters.charAt(Math.floor(Math.random() * characters.length));",
+									"    }",
+									"    return result;",
+									"}",
+									"",
+									"pm.environment.set(\"username\", generateRandomUserName(7))",
+									"// const username = generateRandomUserName(7);    ",
+									"pm.environment.set(\"email\", pm.variables.replaceIn('{{$randomEmail}}'))",
+									"// pm.environment.set(\"password\", pm.variables.replaceIn('pier123!')",
+									"const password = 'pier123!'"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1427,7 +1913,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"user\": {\n    \"username\": \"{{randomFirstName}}.{{randomLastName}}\",\n    \"email\": \"{{randomEmail}}\",\n    \"password\": \"superPassword!\"\n  }\n}\n",
+							"raw": "{\n  \"user\": {\n    \"username\": \"{{username}}.{{username}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n  }\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1435,9 +1921,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}users",
+							"raw": "{{url}}/users",
 							"host": [
-								"{{url}}users"
+								"{{url}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -1548,9 +2037,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles",
+							"raw": "{{url}}/articles",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
+							],
+							"path": [
+								"articles"
 							]
 						}
 					},
@@ -1663,11 +2155,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -1756,11 +2249,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -1864,11 +2358,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -1972,9 +2467,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles",
+							"raw": "{{url}}/articles",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
+							],
+							"path": [
+								"articles"
 							]
 						}
 					},
@@ -2388,9 +2886,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles",
+							"raw": "{{url}}/articles",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
+							],
+							"path": [
+								"articles"
 							]
 						}
 					},
@@ -2470,11 +2971,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -2574,11 +3076,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -2669,11 +3172,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}",
+							"raw": "{{url}}/articles/{{slugConduit}}",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}"
 							]
 						}
@@ -2757,11 +3261,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}profiles/{{username}}",
+							"raw": "{{url}}/profiles/{{username}}",
 							"host": [
-								"{{url}}profiles"
+								"{{url}}"
 							],
 							"path": [
+								"profiles",
 								"{{username}}"
 							]
 						}
@@ -3095,11 +3600,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}articles/{{slugConduit}}/comments",
+							"raw": "{{url}}/articles/{{slugConduit}}/comments",
 							"host": [
-								"{{url}}articles"
+								"{{url}}"
 							],
 							"path": [
+								"articles",
 								"{{slugConduit}}",
 								"comments"
 							]
@@ -3614,6 +4120,11 @@
 					"                if (jsonResponse && jsonResponse.user && jsonResponse.user.token) {\r",
 					"                    pm.environment.set('authToken', jsonResponse.user.token);\r",
 					"                }\r",
+					"                if (jsonResponse && jsonResponse.user && jsonResponse.user.email) {\r",
+					"                    pm.environment.set('email', jsonResponse.user.email);\r",
+					"                }\r",
+					"                pm.environment.set('username', jsonResponse.user.username);\r",
+					"                pm.environment.set('password', password)\r",
 					"                resolve(response);\r",
 					"            }\r",
 					"        });\r",
@@ -3888,7 +4399,7 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "https://conduit.mate.academy/api\n",
+			"value": "https://conduit.mate.academy/api",
 			"type": "string"
 		},
 		{
